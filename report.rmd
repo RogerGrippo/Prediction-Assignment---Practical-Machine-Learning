@@ -1,0 +1,34 @@
+
+
+# Human Activity Recognition
+
+## Executive Summary
+
+The purpose of the report is to describe the methodology used to produce a model that was
+then applied to the training results of group of 20 individuals that resulted
+in 100% success of predicting the training class used by each participant.
+Applied machine learning techniques In R programming and gbm (generalized
+boosted regression model) algorithm were used.
+
+Model accuracy and estimated error was calculated in two ways: a 20% validation data 
+split and a k-fold cross validation where k = 10. K-fold cross validation was
+.9621 while the validation set was predicted at a rate of .9609.
+
+## Description of Experiment
+
+Using devices
+such as Jawbone Up, Nike FuelBand, and Fitbit it is now possible to collect a
+large amount of data about personal activity relatively inexpensively. This
+purpose of this experiment is to use data from accelerometers on the belt,
+forearm, arm, and dumbbells of 6 participants and determine if they are performing
+perform barbell lifts correctly or incorrectly.
+
+
+
+## Description of Data
+
+Data for this experiment is sourced from the Human Activity Recognition (HAR) project
+at http://groupware.les.inf.puc-rio.br/har. Six young health participants were asked to perform one set of 10 repetitions of
+the Unilateral Dumbbell Biceps Curl in five different fashions: exactly according to the specification (Class A), throwing the elbows to the front
+(Class B), lifting the dumbbell only halfway (Class C), lowering the dumbbell only halfway (Class D) and throwing the hips to the front (Class E).
+

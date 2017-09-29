@@ -72,7 +72,7 @@ dftestdata <- as.data.frame(read.csv(textConnection(testcsv)))
 ```
 
 
-# Data preparation:
+## Data preparation:
 
 The data from the HAR project consists of a training set and a test set. The training set is made up of 160 variables and 15,699 observations while the testing set consists of 160 variables and 20 observations or
 prediction instances. 
@@ -88,7 +88,7 @@ training   <- training[,Keep]
 crossvalidating <-crossvalidating[,Keep]
 ```
 
-# Boost GBM model
+## Boost GBM model
 
 
 Using training data, a model is created using GBM (generalized boosted regression model) package. The results are summarized below.
@@ -105,9 +105,7 @@ model_gbm$finalModel
 
 
 
-## Visualizationof Model Variables
-
-
+## Visualization of Model Variables
 
 The model variables and their relative importance are indicated below. Based on the importance analysis, the model performance could have been further enhanced by deselecting the variables with no explanatory power. Note also that out of the 53 input variables, ~10% have an importance >20 suggesting significant prospect for further enhancement.
 

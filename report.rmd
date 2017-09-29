@@ -1,6 +1,6 @@
 
 
-# Human Activity Recognition
+# Human Activity Recognition Analysis
 
 ## Executive Summary
 
@@ -12,7 +12,7 @@ boosted regression model) algorithm were used.
 
 Model accuracy and estimated error was calculated in two ways: a 20% validation data 
 split and a k-fold cross validation where k = 10. K-fold cross validation was
-.9621 while the validation set was predicted at a rate of .9609.
+.9969 while the validation set was predicted at a rate of .9964.
 
 ## Description of Experiment
 
@@ -213,72 +213,4 @@ predict.test.gbm
 [1] B A B A A E D B A A B C B A E E A B B B 
 Levels: A B C D E
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

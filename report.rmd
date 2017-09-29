@@ -125,11 +125,34 @@ The BOOST gbm algorithm was conducted with a 10-fold crossvalidation. The data a
 iteration of 96.09% rising from an initial accuracy of 75.15% in teh first iteration.
 ```r
 plot(model_gbm)
+```
+
 ```r
+plot(model_gbm)
+```
 
-
-
-
+Stochastic Gradient Boosting 
+15699 samples
+58 predictors
+5 classes: 'A', 'B', 'C', 'D', 'E' 
+No pre-processing
+Resampling: Cross-Validated (10 fold)
+Summary of sample sizes: 14129, 14129, 14130, 14129, 14130, 14128, ... 
+Resampling results across tuning parameters:
+  interaction.depth  n.trees  Accuracy   Kappa      Accuracy SD  Kappa SD
+  1                   50      0.8411362  0.7985087  0.011015858  0.014072039
+  1                  100      0.8992299  0.8723744  0.008630729  0.010949349
+  1                  150      0.9282761  0.9091366  0.007617383  0.009675722
+  2                   50      0.9579594  0.9467798  0.008094323  0.010277777
+  2                  100      0.9871330  0.9837246  0.003969270  0.005021412
+  2                  150      0.9920378  0.9899292  0.002868143  0.003627873
+  3                   50      0.9836299  0.9792924  0.003315789  0.004195634
+  3                  100      0.9933753  0.9916210  0.001856036  0.002347686  
+  3                  150      0.9969426  0.9961328  0.001401931  0.001773376
+Tuning parameter 'shrinkage' was held constant at a value of 0.1
+Tuning parameter 'n.minobsinnode' was held constant at a value of 10
+Accuracy was used to select the optimal model using  the largest value.
+The final values used for the model were n.trees = 150, interaction.depth = 3, shrinkage = 0.1 and n.minobsinnode = 10..
 
 
 

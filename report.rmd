@@ -7,7 +7,7 @@
 The purpose of the report is to describe the methodology used to produce a model that was
 then applied to the training results of group of 20 individuals that resulted
 in 100% success of predicting the training class used by each participant.
-Applied machine learning techniques In R programming and gbm (generalized
+Applied machine learning techniques in R programming and gbm (generalized
 boosted regression model) algorithm were used.
 
 Model accuracy and estimated error was calculated in two ways: a 20% validation data 
@@ -127,7 +127,7 @@ plot(model_gbm)
 ```
 
 ```r
-plot(model_gbm)
+model_gbm
 ```
 
 ```

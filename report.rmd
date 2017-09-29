@@ -57,7 +57,7 @@ pml_training <- pml_training[,-1]
 ```
 
 
-# create training and validating data sets
+## create training and validating data sets
 
 ```r
 alltrain = createDataPartition(pml_training$classe,p=0.80, list=FALSE)
@@ -65,14 +65,14 @@ training = pml_training[alltrain,]
 crossvalidating = pml_training[-allTrain,]
 ```
 
-# create testing data sets
+## create testing data sets
 ```r
 testcsv <- getURL("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv")
 dftestdata <- as.data.frame(read.csv(textConnection(testcsv)))
 ```
 
 
-## Data preparation:
+# Data preparation:
 
 The data from the HAR project consists of a training set and a test set. The training set is made up of 160 variables and 15,699 observations while the testing set consists of 160 variables and 20 observations or
 prediction instances. 
@@ -80,8 +80,7 @@ prediction instances.
 Review of the training and test data sets reveals multiple columns with NA’s. These columns have been removed since they would offer no
 value to the model and prediction.  
 
-# Remove non-relevant data: 
-
+## Remove non-relevant data: 
 
 ```r
 remove columns without data
@@ -89,3 +88,80 @@ Keep <-c((colSums(!is.na(training[,-ncol(training)])) >= 0.6*nrow(training)))
 training   <- training[,Keep]
 crossvalidating <-crossvalidating[,Keep]
 ```
+
+# Boost GBM model
+
+
+Using training data, a model is created using GBM (generalized boosted regression model) package. The results are summarized below.
+
+```r
+control <- trainControl(method="cv", number=10)
+model_gbm <- train(classe~. , data = training , method="gbm" , trControl=control ,  verbose = FALSE )
+model_gbm$finalModel
+```
+
+## A gradient boosted model with multinomial loss function.
+## 150 iterations were performed.
+## There were 52 predictors of which 44 had non-zero influence.
+
+
+
+# Visualizationof Model Variables
+
+
+
+The model variables and their relative importance are indicated below. Based on the importance analysis, the model performance could have been further enhanced by deselecting the variables with no explanatory power. Note also that out of the 53 input variables, ~10% have an importance >20 suggesting significant prospect for further enhancement.
+
+```r
+# Visualization
+plot(varImp(model_gbm))
+```
+
+
+
+# Cross Validation and Predicted Error
+
+The BOOST gbm algorithm was conducted with a 10-fold crossvalidation. The data and plot below shows an achieved accuracy on the 3rd
+iteration of 96.09% rising from an initial accuracy of 75.15% in teh first iteration.
+```r
+plot(model_gbm)
+```r
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

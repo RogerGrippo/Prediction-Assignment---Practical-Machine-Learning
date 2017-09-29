@@ -36,15 +36,13 @@ the Unilateral Dumbbell Biceps Curl in five different fashions: exactly accordin
 
 ## Data gathering
 
+```r
 library(caret)
-
 library(splines)
-
 library(parallel)
-
 library(plyr)
-
 require(RCurl)
+```
 
 Fetch data from Human Activity Recognition project
 

@@ -46,28 +46,30 @@ require(RCurl)
 
 Fetch data from Human Activity Recognition project
 
+```r
 trainingdata <- getURL("http://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv")
-
 pml_training  <- read.csv(text =trainingdata, header=TRUE, sep=",",na.strings=c("NA",""))
+```
 
 ### Remove the first column of each row,  the first column that represents a ID Row
-
+```r
 pml_training <- pml_training[,-1] 
-
+```
 
 
 # create training and validating data sets
+
+```r
 alltrain = createDataPartition(pml_training$classe,p=0.80, list=FALSE)
-
 training = pml_training[alltrain,]
-
 crossvalidating = pml_training[-allTrain,]
+```
 
 # create testing data sets
+```r
 testcsv <- getURL("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv")
-
 dftestdata <- as.data.frame(read.csv(textConnection(testcsv)))
-
+```
 
 
 ## Data preparation:
@@ -79,11 +81,11 @@ Review of the training and test data sets reveals multiple columns with NA’s. 
 value to the model and prediction.  
 
 # Remove non-relevant data: 
+
+
+```r
 remove columns without data
-
 Keep <-c((colSums(!is.na(training[,-ncol(training)])) >= 0.6*nrow(training)))
-
 training   <- training[,Keep]
-
 crossvalidating <-crossvalidating[,Keep]
-
+```

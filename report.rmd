@@ -122,7 +122,7 @@ plot(varImp(model_gbm))
 # Cross Validation and Predicted Error
 
 The BOOST gbm algorithm was conducted with a 10-fold crossvalidation. The data and plot below shows an achieved accuracy on the 3rd
-iteration of 96.09% rising from an initial accuracy of 75.15% in teh first iteration.
+iteration of 96.69% rising from an initial accuracy of 84.11% in teh first iteration.
 ```r
 plot(model_gbm)
 ```

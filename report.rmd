@@ -37,9 +37,13 @@ the Unilateral Dumbbell Biceps Curl in five different fashions: exactly accordin
 ## Data gathering
 
 library(caret)
+
 library(splines)
+
 library(parallel)
+
 library(plyr)
+
 require(RCurl)
 
 Fetch data from Human Activity Recognition project
@@ -56,11 +60,14 @@ pml_training <- pml_training[,-1]
 
 # create training and validating data sets
 alltrain = createDataPartition(pml_training$classe,p=0.80, list=FALSE)
+
 training = pml_training[alltrain,]
+
 crossvalidating = pml_training[-allTrain,]
 
 # create testing data sets
 testcsv <- getURL("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv")
+
 dftestdata <- as.data.frame(read.csv(textConnection(testcsv)))
 
 
@@ -77,6 +84,7 @@ value to the model and prediction. 
 remove columns without data
 
 Keep <-c((colSums(!is.na(training[,-ncol(training)])) >= 0.6*nrow(training)))
+
 training   <- training[,Keep]
 
 crossvalidating <-crossvalidating[,Keep]

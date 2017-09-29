@@ -153,8 +153,100 @@ plot(model_gbm)
 ## Tuning parameter 'shrinkage' was held constant at a value of 0.1
 ## Tuning parameter 'n.minobsinnode' was held constant at a value of 10
 ## Accuracy was used to select the optimal model using  the largest value.
-## The final values used for the model were n.trees = 150, interaction.depth = 3, shrinkage = 0.1 and n.minobsinnode = 10..
+## The final values used for the model were n.trees = 150, interaction.depth = 3,
+shrinkage = 0.1 and n.minobsinnode = 10..
 ```
+
+##Validation Accuracy
+Model accuracy and error were further estimated by randomly splitting 20% of the training data prior to model construction.
+The below confusion matrix shows the estimated accuracy to be 99.64%.
+
+```r
+cross_validation_results_boost <- predict(model_gbm , newdata = crossvalidating)confusionMatrix(df.val$classe , cross_validation_results_boost)Confusion Matrix and Statistics
+```
+
+```
+## Reference Prediction
+##      A    B    C    D    E
+## A 1116    0    0    0    0
+## B    0  759    0    0    0
+## C    0    1  677    6    0
+## D    0    0    5  638    0
+## E    0    0    0    2  719
+
+## Overall Statistics                                                       
+##       Accuracy : 0.9964
+##       95% CI : (0.994, 0.998)
+##       No Information Rate : 0.2845
+##       P-Value [Acc > NIR] : < 2.2e-16
+##       Kappa : 0.9955         
+##       Mcnemar's Test P-Value : NA            
+## Statistics by Class:
+
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            1.0000   0.9987   0.9927   0.9876   1.0000
+## Specificity            1.0000   1.0000   0.9978   0.9985   0.9994
+## Pos Pred Value         1.0000   1.0000   0.9898   0.9922   0.9972
+## Neg Pred Value         1.0000   0.9997   0.9985   0.9976   1.0000
+## Prevalence             0.2845   0.1937   0.1738   0.1647   0.1833
+## Detection Rate         0.2845   0.1935   0.1726   0.1626   0.1833
+## Detection Prevalence   0.2845   0.1935   0.1744   0.1639   0.1838
+## Balanced Accuracy      1.0000   0.9993   0.9953   0.9930   0.9997
+```
+
+## Model resultsThe resulting data produced from the boost modeling of the HAR data presented below in order from 1 to 20. On submission to the Coursera Project Page, the results were shown to be 100% correct.
+
+```r
+predict.test.gbm <- predict(model_gbm , newdata = dftestdata )
+# Produce result files
+n = length(predict.test.gbm)
+for(i in 1:n){
+filename = paste0("problem_id_",i,".txt")
+write.table(predict.test.gbm[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
+}
+```
+###The resulting data produced from the boost modeling of the HAR data presented below in order from 1 to 20. On submission to the Coursera Project Page, the results were shown to be 100% correct.
+
+```r
+predict.test.gbm
+[1] B A B A A E D B A A B C B A E E A B B B 
+Levels: A B C D E
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

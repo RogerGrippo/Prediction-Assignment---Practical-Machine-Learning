@@ -81,9 +81,8 @@ Review of the training and test data sets reveals multiple columns with NA’s. 
 value to the model and prediction.  
 
 ## Remove non-relevant data: 
-
-```r
 remove columns without data
+```r
 Keep <-c((colSums(!is.na(training[,-ncol(training)])) >= 0.6*nrow(training)))
 training   <- training[,Keep]
 crossvalidating <-crossvalidating[,Keep]
@@ -106,7 +105,7 @@ model_gbm$finalModel
 
 
 
-# Visualizationof Model Variables
+## Visualizationof Model Variables
 
 
 
@@ -158,6 +157,7 @@ shrinkage = 0.1 and n.minobsinnode = 10..
 ```
 
 ##Validation Accuracy
+
 Model accuracy and error were further estimated by randomly splitting 20% of the training data prior to model construction.
 The below confusion matrix shows the estimated accuracy to be 99.64%.
 
@@ -194,7 +194,7 @@ cross_validation_results_boost <- predict(model_gbm , newdata = crossvalidating)
 ## Balanced Accuracy      1.0000   0.9993   0.9953   0.9930   0.9997
 ```
 
-## Model resultsThe resulting data produced from the boost modeling of the HAR data presented below in order from 1 to 20. On submission to the Coursera Project Page, the results were shown to be 100% correct.
+### Model prediction
 
 ```r
 predict.test.gbm <- predict(model_gbm , newdata = dftestdata )
@@ -205,7 +205,8 @@ filename = paste0("problem_id_",i,".txt")
 write.table(predict.test.gbm[i],file=filename,quote=FALSE,row.names=FALSE,col.names=FALSE)
 }
 ```
-###The resulting data produced from the boost modeling of the HAR data presented below in order from 1 to 20. On submission to the Coursera Project Page, the results were shown to be 100% correct.
+### Model results
+The resulting data produced from the boost modeling of the HAR data presented below in order from 1 to 20. On submission to the Coursera Project Page, the results were shown to be 100% correct.
 
 ```r
 predict.test.gbm
